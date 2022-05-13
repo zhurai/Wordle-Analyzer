@@ -1,5 +1,9 @@
-# virtualenv
+# Python / VirtualEnv
+__pycache__/
 pyvenv.cfg
-Lib
-Scripts
+Lib/
+Scripts/
+
+# Data Specific
+english-words/
 DataConfig.ini
