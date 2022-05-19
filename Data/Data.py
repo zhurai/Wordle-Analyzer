@@ -1,6 +1,7 @@
 # Python 3.10.4
 import config
 import getData
+import sys
 
 # main function
 def main():

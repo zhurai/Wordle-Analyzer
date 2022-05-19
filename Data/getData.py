@@ -1,5 +1,6 @@
 # Python 3.10.4
 import config
+import sys
 
 # filter data
 def filterData(thedata,wordlength):
