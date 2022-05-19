@@ -17,16 +17,16 @@ def filterData(thedata,wordlength):
 
 # open file into memory, returns the data
 def openFile(sourcefile):
-	global OriginalLength
+	global OriginalTotalLength
 	config.debug("openFile: Opening sourcefile: " + sourcefile) 
 	thedata=[]
-	OriginalLength=0
+	OriginalTotalLength=0
 	with open(sourcefile,'r') as f:
 		for line in f:
 			entry=f.readline()
 			entry=entry.strip('\n')
 			thedata.append(entry)
-			OriginalLength += 1
+			OriginalTotalLength += 1
 	return thedata
 
 # main function
@@ -47,7 +47,7 @@ def main():
 		sys.exit(1)
 
 	# print current data
-	print("Total Length of File "+str(OriginalLength))
+	print("Total Length of File "+str(OriginalTotalLength))
 	print("Edited Length of File "+str(EditedTotalLength))
 
 # check for proper environment to run main() function automatically
