@@ -26,8 +26,8 @@ def main():
 	print("Edited Length of File "+str(getData.EditedTotalLength))
 
 	# save the edited data into a new file
-	if config.config.has_option("IMPORTDATA","target_file"):
-		targetfile=config.config['IMPORTDATA']['target_file']
+	if config.config.has_option("IMPORTDATA","target_text_file"):
+		targetfile=config.config['IMPORTDATA']['target_text_file']
 		importData.saveFile(thedata,targetfile)
 	else:
 		config.debug("Unable to find 'target_file' entry in the configuration file")
