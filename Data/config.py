@@ -16,8 +16,6 @@ except:
 
 # debug message function
 def debug(errortext):
-	if config.config.has_option("GETDATA","debug"):
-		if config['GETDATA']['debug']=='1':
+	if config.has_option("GETDATA","debug"):
+		if config.get('GETDATA','debug')=='1':
 			print("DEBUG: " + errortext)
-	else: 
-		# unable to find debug entry in configuration file, just ignoring
