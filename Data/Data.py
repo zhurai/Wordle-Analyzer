@@ -2,6 +2,7 @@
 import config
 import getData
 import sys
+import importData
 
 # main function
 def main():
@@ -23,6 +24,15 @@ def main():
 	# print current data
 	print("Total Length of File "+str(getData.OriginalTotalLength))
 	print("Edited Length of File "+str(getData.EditedTotalLength))
+
+	# save the edited data into a new file
+	if config.config.has_option("IMPORTDATA","target_file"):
+		targetfile=config.config['IMPORTDATA']['target_file']
+		importData.saveFile(thedata,targetfile)
+	else:
+		config.debug("Unable to find 'target_file' entry in the configuration file")
+		sys.exit(1)
+			
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
