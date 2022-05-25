@@ -43,13 +43,13 @@ def main():
 	editedstats=getData.getInformation(editeddata,editedlength,True)
 
 	# output statistics about the data
-	#print("Source File Statistics")
-	#for x in sourcestats:
-	#	print(" " + x + " " + str(sourcestats[x]))
-	#print("\n")
-	#print("Edited File Statistics")
-	#for x in editedstats:
-	#	print(" " + x + " " + str(editedstats[x]))
+	print("Source File Statistics")
+	for x in sourcestats:
+		print(" " + x + " " + str(sourcestats[x]))
+	print("\n")
+	print("Edited File Statistics")
+	for x in editedstats:
+		print(" " + x + " " + str(editedstats[x]))
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
