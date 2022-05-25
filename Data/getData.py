@@ -1,6 +1,14 @@
 # Python 3.10.4
 import config
-import sys
+
+# Collect Information on the data
+def getInformation(thedata,length):
+	theinfo = {}
+
+	# Number of words in lexicon
+	theinfo['length'] = length
+	
+	return theinfo
 
 # filter data
 def filterData(thedata,wordlength):
