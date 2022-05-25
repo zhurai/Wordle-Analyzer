@@ -28,6 +28,10 @@ def main():
 	else:
 		config.debug("Unable to find 'target_file' entry in the configuration file")
 		sys.exit(1)
+	
+    # get statistics about the data
+	sourcestats=getData.getInformation(sourcedata,sourcelength,False)
+	editedstats=getData.getInformation(editeddata,editedlength,True)
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
