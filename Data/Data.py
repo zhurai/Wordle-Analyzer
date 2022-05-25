@@ -8,7 +8,7 @@ import importData
 def main():
 	# open file into memory
 	if config.config.has_option("GETDATA","source_file"):
-		thedata=getData.openFile("./english-words/"+config.config.get('GETDATA','source_file'))
+		sourcedata,sourcelength=getData.openFile("./english-words/"+config.config.get('GETDATA','source_file'))
 	else:
 		config.debug("Unable to find 'source_file' entry in the configuration file")
 		sys.exit(1)
@@ -16,23 +16,18 @@ def main():
 	# filter the list for words that are word_length long
 	if config.config.has_option("GETDATA","word_length"):
 		wordlength=int(config.config['GETDATA']['word_length'])
-		thedata=getData.filterData(thedata,wordlength)
+		editeddata,editedlength=getData.filterData(sourcedata,wordlength)
 	else:
 		config.debug("Unable to find 'word_length' entry in the configuration file")
 		sys.exit(1)
 
-	# print current data
-	print("Total Length of File "+str(getData.OriginalTotalLength))
-	print("Edited Length of File "+str(getData.EditedTotalLength))
-
 	# save the edited data into a new file
 	if config.config.has_option("IMPORTDATA","target_text_file"):
 		targetfile=config.config['IMPORTDATA']['target_text_file']
-		importData.saveFile(thedata,targetfile)
+		importData.saveFile(editeddata,targetfile)
 	else:
 		config.debug("Unable to find 'target_file' entry in the configuration file")
 		sys.exit(1)
-			
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
