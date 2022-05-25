@@ -1,5 +1,6 @@
 # Python 3.10.4
 import config
+import string
 
 # Collect Information on the data
 def getInformation(thedata,length):
@@ -7,6 +8,14 @@ def getInformation(thedata,length):
 
 	# Number of words in lexicon
 	theinfo['length'] = length
+
+	# Number of words containing each letter of the word at least once
+	for letter in list(string.ascii_lowercase):
+		for item in x:
+			if item.find(letter) > -1:
+				count=count+1
+		theinfo['once-'+letter]=count
+		count=0
 	
 	return theinfo
 
