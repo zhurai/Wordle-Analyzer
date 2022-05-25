@@ -16,7 +16,11 @@ def main():
 			sys.exit(1)
 	else:
 		config.debug("Unable to find 'source_file' entry in the configuration file, attempting to use test_data.txt")
-		sys.exit(1)
+		try: 
+			sourcedata,sourcelength=getData.openFile(str(pathlib.Path(__file__).parent)+"\\test_data.txt")
+		except:
+			config.debug("Unable to use data from " + str(pathlib.Path(__file__).parent)+"\\test_data.txt")
+			sys.exit(1)
 
 	# filter the list for words that are word_length long
 	if config.config.has_option("GETDATA","word_length"):
