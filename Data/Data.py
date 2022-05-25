@@ -41,7 +41,7 @@ def main():
 	print("\n")
 	print("Edited File Statistics")
 	for x in editedstats:
-		print(x + " " + str(editedstats[x]))
+		print(" " + x + " " + str(editedstats[x]))
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
