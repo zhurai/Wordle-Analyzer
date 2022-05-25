@@ -9,7 +9,11 @@ import pathlib
 def main():
 	# open file into memory
 	if config.config.has_option("GETDATA","source_file"):
-		sourcedata,sourcelength=getData.openFile(str(pathlib.Path(__file__).parent)+"\english-words\\"+config.config.get('GETDATA','source_file'))
+		try:
+			sourcedata,sourcelength=getData.openFile(str(pathlib.Path(__file__).parent)+"\english-words\\"+config.config.get('GETDATA','source_file'))
+		except:
+			config.debug("Unable to use data from " + str(pathlib.Path(__file__).parent)+"\english-words\\"+config.config.get('GETDATA','source_file'))
+			sys.exit(1)
 	else:
 		config.debug("Unable to find 'source_file' entry in the configuration file, attempting to use test_data.txt")
 		sys.exit(1)
