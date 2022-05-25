@@ -3,7 +3,7 @@ import config
 import string
 
 # Collect Information on the data
-def getInformation(thedata,length):
+def getInformation(thedata,length,edited):
 	theinfo = {}
 	wordlength=int(config.config.get('GETDATA','word_length'))
 
@@ -21,6 +21,10 @@ def getInformation(thedata,length):
 				countmult=countmult+1
 		theinfo['once-'+letter]=count
 		theinfo['multi-'+letter]=countmult
+
+	# Only continue on if it is the edited version (based off word_length)
+	if edited is False:
+		return theinfo
 
 	# Number of words with each letter in position 1..x
 	for position in range(0,wordlength):
