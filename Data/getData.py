@@ -61,8 +61,7 @@ def openFile(sourcefile):
 	thelength=0
 	with open(sourcefile,'r') as f:
 		for line in f:
-			entry=f.readline()
-			entry=entry.strip('\n')
+			entry=line.strip('\n')
 			thedata.append(entry)
 			thelength=thelength+1
 	return thedata,thelength
