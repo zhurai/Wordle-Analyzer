@@ -3,12 +3,13 @@ import config
 import getData
 import sys
 import importData
+import pathlib
 
 # main function
 def main():
 	# open file into memory
 	if config.config.has_option("GETDATA","source_file"):
-		sourcedata,sourcelength=getData.openFile("./english-words/"+config.config.get('GETDATA','source_file'))
+		sourcedata,sourcelength=getData.openFile(str(pathlib.Path(__file__).parent)+"/english-words/"+config.config.get('GETDATA','source_file'))
 	else:
 		config.debug("Unable to find 'source_file' entry in the configuration file")
 		sys.exit(1)
@@ -23,7 +24,7 @@ def main():
 
 	# save the edited data into a new file
 	if config.config.has_option("IMPORTDATA","target_text_file"):
-		targetfile=config.config['IMPORTDATA']['target_text_file']
+		targetfile=str(pathlib.Path(__file__).parent)+"/"+config.config['IMPORTDATA']['target_text_file']
 		importData.saveFile(editeddata,targetfile)
 	else:
 		config.debug("Unable to find 'target_file' entry in the configuration file")

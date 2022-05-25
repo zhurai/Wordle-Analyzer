@@ -8,7 +8,7 @@ def getInformation(thedata,length,edited):
 	wordlength=int(config.config.get('GETDATA','word_length'))
 
 	# Number of words in lexicon
-	config.debug("getInformation: get number of words in lexicon: " + length)
+	config.debug("getInformation: get number of words in lexicon: " + str(length))
 	theinfo['length'] = length
 
 	# Number of words containing each letter of the word at least once
@@ -51,7 +51,7 @@ def filterData(thedata,wordlength):
 	for item in thedata:
 		if len(item)==wordlength:
 			thedata2.append(item)
-			EditedTotalLength += 1
+			thelength=thelength+1
 	return thedata2,thelength
 
 # open file into memory, returns the data
@@ -64,5 +64,5 @@ def openFile(sourcefile):
 			entry=f.readline()
 			entry=entry.strip('\n')
 			thedata.append(entry)
-			OriginalTotalLength += 1
+			thelength=thelength+1
 	return thedata,thelength

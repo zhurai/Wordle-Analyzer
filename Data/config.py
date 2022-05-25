@@ -1,6 +1,7 @@
 # Python 3.10.4
 import configparser
 import sys
+import pathlib
 
 # variables
 configfile='DataConfig.ini'
@@ -8,7 +9,7 @@ config = configparser.ConfigParser()
 
 try:
 	# try to read configuration file
-	config.read_file(open(configfile,"r"))
+	config.read_file(open(str(pathlib.Path(__file__).parent)+"\\"+configfile,"r"))
 except:
 	# if configuration file is empty	
 	print("DEBUG: Unable to read configuration file")
