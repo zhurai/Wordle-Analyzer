@@ -11,11 +11,11 @@ def getInformation(thedata,length):
 
 	# Number of words containing each letter of the word at least once
 	for letter in list(string.ascii_lowercase):
-		for item in x:
+		count=0
+		for item in thedata:
 			if item.find(letter) > -1:
 				count=count+1
 		theinfo['once-'+letter]=count
-		count=0
 	
 	return theinfo
 
