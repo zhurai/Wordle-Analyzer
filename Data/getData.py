@@ -5,6 +5,7 @@ import string
 # Collect Information on the data
 def getInformation(thedata,length):
 	theinfo = {}
+	wordlength=int(config.config.get('GETDATA','word_length'))
 
 	# Number of words in lexicon
 	theinfo['length'] = length
@@ -20,6 +21,16 @@ def getInformation(thedata,length):
 				countmult=countmult+1
 		theinfo['once-'+letter]=count
 		theinfo['multi-'+letter]=countmult
+
+	# Number of words with each letter in position 1..x
+	for position in range(0,wordlength):
+		# position 0 = 1st position on wordle!
+		for letter in list(string.ascii_lowercase):
+			count=0
+			for item in thedata:
+				if item[position] == letter:
+						count=count+1
+			theinfo['position-'+str(position+1)+'-'+letter]=count
 	
 	return theinfo
 
