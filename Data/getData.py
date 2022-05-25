@@ -26,26 +26,3 @@ def openFile(sourcefile):
 			thedata.append(entry)
 			OriginalTotalLength += 1
 	return thedata,thelength
-
-# main function
-def main():
-	# open file into memory
-	if config.config.has_option("GETDATA","source_file"):
-		thedata,originallength=openFile("./english-words/"+config.config.get('GETDATA','source_file'))
-	else:
-		config.debug("Unable to find 'source_file' entry in the configuration file")
-		sys.exit(1)
-
-	# filter the list for words that are word_length long
-	if config.config.has_option("GETDATA","word_length"):
-		wordlength=int(config.config['GETDATA']['word_length'])
-		thedata,editedlength=filterData(thedata,wordlength)
-	else:
-		config.debug("Unable to find 'word_length' entry in the configuration file")
-		sys.exit(1)
-
-
-# check for proper environment to run main() function automatically
-if __name__ == '__main__':
-	main()
-
