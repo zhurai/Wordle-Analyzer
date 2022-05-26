@@ -9,8 +9,8 @@ config = configparser.ConfigParser()
 
 try:
 	# try to read configuration file
-	thepath=pathlib.Path(__file__).parent
-	theconfig=thepath / configfile
+	CURRENT_DIRECTORY=pathlib.Path(__file__).parent
+	theconfig=CURRENT_DIRECTORY / configfile
 	config.read_file(theconfig.open("r"))
 except:
 	# if configuration file is empty	
