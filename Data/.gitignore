@@ -6,6 +6,5 @@ Scripts/
 
 # Data Specific
 DataConfig.ini
-words.txt 
 test_data.txt
 # if DataConfig.ini/DataConfig.default.ini (IMPORTDATA/target_text_file) was changed locally from the defaults, do not commit those generated files
