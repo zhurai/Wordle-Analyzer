@@ -13,20 +13,20 @@ def getOutputPath():
     # returns an pathlib.Path object
     return thepath
 
-def saveFile(TheData,TargetFile):
-    # TheData = list of words
-    # TargetFile = where to save into
+def saveFile(thedata,thefile):
+    # thedata = list of words
+    # thefile = where to save into (pathlib.Path)
 
     # Erase previous contents of the file
-    config.debug("Erasing contents of file: " + TargetFile)
-    file = open(TargetFile,"w+")
+    config.debug("Erasing contents of file: " + thefile)
+    file = open(thefile,"w+")
     file.truncate(0)
     file.close()
 
     # Save new data into the file
-    config.debug("Updating contents of file: " + TargetFile)
-    with open(TargetFile,'w+') as f:
-        for line in TheData:
+    config.debug("Updating contents of file: " + thefile)
+    with open(thefile,'w+') as f:
+        for line in thedata:
             f.write(line+"\n")
 
 # main function
