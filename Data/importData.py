@@ -1,6 +1,7 @@
 # Python 3.10.4
 import config
 import pathlib
+import csv
 
 def getOutputPath():
     thepath=pathlib.Path(__file__).parent / 'output'
@@ -12,7 +13,7 @@ def getOutputPath():
     # returns an pathlib.Path object
     return thepath
 
-def saveFile(thedata,thefile):
+def saveStatsFile(thedata,thefile):
     # thedata = list of words
     # thefile = where to save into (pathlib.Path)
 
@@ -24,6 +25,24 @@ def saveFile(thedata,thefile):
 
     # Save new data into the file
     config.debug("Updating contents of file: " + str(thefile))
-    with thefile.open('w') as f:
+    with thefile.open('w',newline='') as file:
+        filewriter=csv.writer(file)
+        for header in thedata:
+            filewriter.writerow([header,str(thedata[header])])
+
+
+def saveWordsFile(thedata,thefile):
+    # thedata = list of words
+    # thefile = where to save into (pathlib.Path)
+
+    # Erase previous contents of the file
+    config.debug("Erasing contents of file: " + str(thefile))
+    file = thefile.open("w")
+    file.truncate(0)
+    file.close()
+
+    # Save new data into the file
+    config.debug("Updating contents of file: " + str(thefile))
+    with thefile.open('w') as file:
         for line in thedata:
-            f.write(line+"\n")
+            file.write(line+"\n")
