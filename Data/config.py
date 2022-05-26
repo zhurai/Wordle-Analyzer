@@ -9,7 +9,9 @@ config = configparser.ConfigParser()
 
 try:
 	# try to read configuration file
-	config.read_file(open(str(pathlib.Path(__file__).parent)+"\\"+configfile,"r"))
+	CURRENT_DIRECTORY=pathlib.Path(__file__).parent
+	theconfig=CURRENT_DIRECTORY / configfile
+	config.read_file(theconfig.open("r"))
 except:
 	# if configuration file is empty	
 	print("DEBUG: Unable to read configuration file")

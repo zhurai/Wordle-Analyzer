@@ -56,10 +56,10 @@ def filterData(thedata,wordlength):
 
 # open file into memory, returns the data
 def openFile(sourcefile):
-	config.debug("openFile: Opening sourcefile: " + sourcefile) 
+	config.debug("openFile: Opening sourcefile: " + str(sourcefile)) 
 	thedata=[]
 	thelength=0
-	with open(sourcefile,'r') as f:
+	with sourcefile.open('r') as f:
 		for line in f:
 			entry=line.strip('\n')
 			thedata.append(entry)
