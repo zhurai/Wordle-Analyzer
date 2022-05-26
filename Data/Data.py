@@ -56,9 +56,15 @@ def main():
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_original_file']
 		importData.saveWordsFile(sourcestats,targetfile)
 	else:
-		config.debug("Unable to find 'target_file' entry in the configuration file")
+		config.debug("Unable to find 'target_stats_original_file' entry in the configuration file")
 		sys.exit(1)
 	
+	if config.config.has_option("IMPORTDATA","target_stats_edited_file"):
+		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_edited_file']
+		importData.saveWordsFile(editedstats,targetfile)
+	else:
+		config.debug("Unable to find 'target_stats_edited_file' entry in the configuration file")
+		sys.exit(1)
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
