@@ -50,6 +50,15 @@ def main():
 	print("Edited File Statistics")
 	for x in editedstats:
 		print(" " + x + " " + str(editedstats[x]))
+	
+	# save the statistics data into a new file
+	if config.config.has_option("IMPORTDATA","target_stats_original_file"):
+		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_original_file']
+		importData.saveWordsFile(sourcestats,targetfile)
+	else:
+		config.debug("Unable to find 'target_file' entry in the configuration file")
+		sys.exit(1)
+	
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
