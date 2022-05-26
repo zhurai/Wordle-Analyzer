@@ -19,13 +19,13 @@ def saveFile(thedata,thefile):
 
     # Erase previous contents of the file
     config.debug("Erasing contents of file: " + thefile)
-    file = open(thefile,"w+")
+    file = thefile.open("w")
     file.truncate(0)
     file.close()
 
     # Save new data into the file
     config.debug("Updating contents of file: " + thefile)
-    with open(thefile,'w+') as f:
+    with thefile.open('w') as f:
         for line in thedata:
             f.write(line+"\n")
 
