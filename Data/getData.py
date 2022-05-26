@@ -17,7 +17,7 @@ def getInformation(thedata,length,edited):
 		count=0
 		countmult=0
 		for item in thedata:
-			if item.count(letter) >= 1:
+			if item.count(letter) == 1:
 				count=count+1
 			if item.count(letter) > 1:
 				countmult=countmult+1
