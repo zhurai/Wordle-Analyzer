@@ -17,13 +17,13 @@ def saveFile(thedata,thefile):
     # thefile = where to save into (pathlib.Path)
 
     # Erase previous contents of the file
-    config.debug("Erasing contents of file: " + thefile)
+    config.debug("Erasing contents of file: " + str(thefile))
     file = thefile.open("w")
     file.truncate(0)
     file.close()
 
     # Save new data into the file
-    config.debug("Updating contents of file: " + thefile)
+    config.debug("Updating contents of file: " + str(thefile))
     with thefile.open('w') as f:
         for line in thedata:
             f.write(line+"\n")
