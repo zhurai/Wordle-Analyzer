@@ -1,0 +1,4 @@
+# Predefined folder structure
+# Ignore all except .gitignore
+*
+!.gitignore
