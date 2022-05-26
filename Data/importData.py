@@ -1,7 +1,17 @@
 # Python 3.10.4
 import config
-import sys
 import getData
+import pathlib
+
+def getOutputPath():
+    thepath=pathlib.Path(__file__).parent / 'output'
+    
+    # if the output directory does not exist, create it
+    if thepath.exists() is False:
+        pathlib.Path.mkdir(thepath)
+    
+    # returns an pathlib.Path object
+    return thepath
 
 def saveFile(TheData,TargetFile):
     # TheData = list of words
