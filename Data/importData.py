@@ -12,7 +12,7 @@ def getOutputPath():
     # returns an pathlib.Path object
     return thepath
 
-def saveFile(thedata,thefile):
+def saveWordsFile(thedata,thefile):
     # thedata = list of words
     # thefile = where to save into (pathlib.Path)
 

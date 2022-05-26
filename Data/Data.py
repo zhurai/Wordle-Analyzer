@@ -33,7 +33,7 @@ def main():
 	# save the edited data into a new file
 	if config.config.has_option("IMPORTDATA","target_text_file"):
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_text_file']
-		importData.saveFile(editeddata,targetfile)
+		importData.saveWordsFile(editeddata,targetfile)
 	else:
 		config.debug("Unable to find 'target_file' entry in the configuration file")
 		sys.exit(1)
