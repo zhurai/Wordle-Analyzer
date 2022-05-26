@@ -25,10 +25,10 @@ def saveStatsFile(thedata,thefile):
 
     # Save new data into the file
     config.debug("Updating contents of file: " + str(thefile))
-    with thefile.open('w') as file:
+    with thefile.open('w',newline='') as file:
         filewriter=csv.writer(file)
-        for line in thedata:
-            filewriter.writerows(line)
+        for header in thedata:
+            filewriter.writerow([header,str(thedata[header])])
 
 
 def saveWordsFile(thedata,thefile):
@@ -43,6 +43,6 @@ def saveWordsFile(thedata,thefile):
 
     # Save new data into the file
     config.debug("Updating contents of file: " + str(thefile))
-    with thefile.open('w') as f:
+    with thefile.open('w') as file:
         for line in thedata:
-            f.write(line+"\n")
+            file.write(line+"\n")

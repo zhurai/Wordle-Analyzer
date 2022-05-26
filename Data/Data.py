@@ -3,7 +3,6 @@ import config
 import getData
 import sys
 import importData
-import pathlib
 
 # main function
 def main():
@@ -21,7 +20,7 @@ def main():
 		except:
 			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / "test_data.txt"))
 			sys.exit(1)
-
+	
 	# filter the list for words that are word_length long
 	if config.config.has_option("GETDATA","word_length"):
 		wordlength=int(config.config['GETDATA']['word_length'])
@@ -29,7 +28,7 @@ def main():
 	else:
 		config.debug("Unable to find 'word_length' entry in the configuration file")
 		sys.exit(1)
-
+	
 	# save the edited data into a new file
 	if config.config.has_option("IMPORTDATA","target_text_file"):
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_text_file']
@@ -41,7 +40,7 @@ def main():
     # get statistics about the data
 	sourcestats=getData.getInformation(sourcedata,sourcelength,False)
 	editedstats=getData.getInformation(editeddata,editedlength,True)
-
+	
 	# output statistics about the data
 	print("Source File Statistics")
 	for x in sourcestats:
@@ -54,14 +53,14 @@ def main():
 	# save the statistics data into a new file
 	if config.config.has_option("IMPORTDATA","target_stats_original_file"):
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_original_file']
-		importData.saveWordsFile(sourcestats,targetfile)
+		importData.saveStatsFile(sourcestats,targetfile)
 	else:
 		config.debug("Unable to find 'target_stats_original_file' entry in the configuration file")
 		sys.exit(1)
 	
 	if config.config.has_option("IMPORTDATA","target_stats_edited_file"):
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_edited_file']
-		importData.saveWordsFile(editedstats,targetfile)
+		importData.saveStatsFile(editedstats,targetfile)
 	else:
 		config.debug("Unable to find 'target_stats_edited_file' entry in the configuration file")
 		sys.exit(1)

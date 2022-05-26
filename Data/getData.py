@@ -6,11 +6,11 @@ import string
 def getInformation(thedata,length,edited):
 	theinfo = {}
 	wordlength=int(config.config.get('GETDATA','word_length'))
-
+	
 	# Number of words in lexicon
 	config.debug("getInformation: get number of words in lexicon: " + str(length))
 	theinfo['length'] = length
-
+	
 	# Number of words containing each letter of the word at least once
 	config.debug("getInformation: get the number of words with a specific letter appearing once/multiple times")
 	for letter in list(string.ascii_lowercase):
@@ -23,12 +23,12 @@ def getInformation(thedata,length,edited):
 				countmult=countmult+1
 		theinfo['once-'+letter]=count
 		theinfo['multi-'+letter]=countmult
-
+	
 	# Only continue on if it is the edited version (based off word_length)
 	config.debug("getInformation: check if edited, if so: continue, if not: return data here")
 	if edited is False:
 		return theinfo
-
+	
 	# Number of words with each letter in position 1..x
 	config.debug("getInformation: check the number of words with each letter for each position")
 	for position in range(0,wordlength):
@@ -39,7 +39,6 @@ def getInformation(thedata,length,edited):
 				if item[position] == letter:
 						count=count+1
 			theinfo['position-'+str(position+1)+'-'+letter]=count
-	
 	return theinfo
 
 # filter data
