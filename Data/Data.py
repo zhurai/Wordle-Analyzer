@@ -7,19 +7,21 @@ import importData
 # main function
 def main():
 	# open file into memory
-	if config.config.has_option("GETDATA","source_file"):
+	if config.args.test != 'none':
+		# if there is test input data
 		try:
-			sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / "english-words" / config.config.get('GETDATA','source_file'))
+			sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / config.args.test)
 		except:
-			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / "english-words" / config.config.get('GETDATA','source_file')))
+			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / config.args.test))
 			sys.exit(1)
 	else:
-		config.debug("Unable to find 'source_file' entry in the configuration file, attempting to use test_data.txt")
-		try: 
-			sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / "test_data.txt")
-		except:
-			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / "test_data.txt"))
-			sys.exit(1)
+		# there is no test input data, use the configuration file
+		if config.config.has_option("GETDATA","source_file"):
+			try:
+				sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / "english-words" / config.config.get('GETDATA','source_file'))
+			except:
+				config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / "english-words" / config.config.get('GETDATA','source_file')))
+				sys.exit(1)
 	
 	# filter the list for words that are word_length long
 	if config.config.has_option("GETDATA","word_length"):
