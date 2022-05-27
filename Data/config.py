@@ -20,7 +20,7 @@ except:
 
 # commandline arguments
 parser = argparse.ArgumentParser(prog='Wordle Analyser')
-parser.add_argument('-t','--test',type=ascii,action='store',help='Test Data File',default='none',metavar='TEST.txt',required=False)
+parser.add_argument('-t','--test',action='store',help='Test Data File',default="none",metavar='TEST.txt',required=False)
 args=parser.parse_args()
 
 # debug message function
