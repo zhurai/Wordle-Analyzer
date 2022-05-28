@@ -5,14 +5,14 @@ import sys
 import importData
 
 # main function
-def main():
+def main(arguments):
 	# open file into memory
-	if config.args.test != 'none':
+	if arguments.test != 'none':
 		# if there is test input data
 		try:
-			sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / config.args.test)
+			sourcedata,sourcelength=getData.openFile(config.CURRENT_DIRECTORY / "test" / arguments.test)
 		except:
-			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / config.args.test))
+			config.debug("Unable to use data from " + str(config.CURRENT_DIRECTORY / "test" / arguments.test))
 			sys.exit(1)
 	else:
 		# there is no test input data, use the configuration file
@@ -69,5 +69,6 @@ def main():
 
 # check for proper environment to run main() function automatically
 if __name__ == '__main__':
-	main()
+	arguments=config.arguments()
+	main(arguments)
 
