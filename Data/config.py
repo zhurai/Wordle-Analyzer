@@ -19,9 +19,11 @@ except:
 	sys.exit(1)
 
 # commandline arguments
-parser = argparse.ArgumentParser(prog='Wordle Analyser')
-parser.add_argument('-t','--test',action='store',help='Test Data File',default="none",metavar='TEST.txt',required=False)
-args=parser.parse_args()
+def arguments():
+	parser = argparse.ArgumentParser(prog='Wordle Analyser')
+	parser.add_argument('-t','--test',action='store',help='Test Data File',default="none",metavar='TEST.txt',required=False)
+	args=parser.parse_args()
+	return args
 
 # debug message function
 def debug(errortext):
