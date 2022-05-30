@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zhurai/Wordle-Analyzer/issues"
   },
-  "homepage": "https://github.com/zhurai/Wordle-Analyzer#readme"
+  "homepage": "https://github.com/zhurai/Wordle-Analyzer#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
