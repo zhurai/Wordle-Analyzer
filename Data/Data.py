@@ -43,15 +43,6 @@ def main(arguments):
 	sourcestats=getData.getInformation(sourcedata,sourcelength,False)
 	editedstats=getData.getInformation(editeddata,editedlength,True)
 	
-	# output statistics about the data
-	print("Source File Statistics")
-	for x in sourcestats:
-		print(" " + x + " " + str(sourcestats[x]))
-	print("\n")
-	print("Edited File Statistics")
-	for x in editedstats:
-		print(" " + x + " " + str(editedstats[x]))
-	
 	# save the statistics data into a new file
 	if config.config.has_option("IMPORTDATA","target_stats_original_file"):
 		targetfile=importData.getOutputPath() / config.config['IMPORTDATA']['target_stats_original_file']
