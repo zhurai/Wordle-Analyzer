@@ -28,7 +28,13 @@ def saveStatsFile(thedata,thefile):
     with thefile.open('w',newline='') as file:
         filewriter=csv.writer(file)
         for header in thedata:
-            filewriter.writerow([header,str(thedata[header])])
+            if isinstance(thedata[header],list):
+                newlist=[header]
+                for item in thedata[header]:
+                    newlist.append(item)
+                filewriter.writerow(newlist)
+            else:
+                filewriter.writerow([header,str(thedata[header])])
 
 
 def saveWordsFile(thedata,thefile):

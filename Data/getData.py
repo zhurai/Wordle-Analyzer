@@ -21,8 +21,7 @@ def getInformation(thedata,length,edited):
 				count=count+1
 			if item.count(letter) > 1:
 				countmult=countmult+1
-		theinfo['once-'+letter]=count
-		theinfo['multi-'+letter]=countmult
+		theinfo['frequency-'+letter]=[count,countmult]
 	
 	# Only continue on if it is the edited version (based off word_length)
 	config.debug("getInformation: check if edited, if so: continue, if not: return data here")
