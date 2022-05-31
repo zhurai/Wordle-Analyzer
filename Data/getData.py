@@ -30,15 +30,14 @@ def getInformation(thedata,length,edited):
 	
 	# Number of words with each letter in position 1..x
 	config.debug("getInformation: check the number of words with each letter for each position")
-	for position in range(0,wordlength):
-		# position 0 = 1st position on wordle!
-		theinfo['position-'+str(position+1)] = []
-		for letter in list(string.ascii_lowercase):
+	for letter in list(string.ascii_lowercase):
+		theinfo[letter+'-by-position']=[]
+		for position in range(0,wordlength): # position 0 = 1st position on wordle!
 			count=0
 			for item in thedata:
 				if item[position] == letter:
 						count=count+1
-			theinfo['position-'+str(position+1)].append(count)
+			theinfo[letter+'-by-position'].append(count)
 	return theinfo
 
 # filter data
